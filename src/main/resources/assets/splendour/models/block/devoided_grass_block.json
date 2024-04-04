@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "splendour:block/devoided_dirt",
+    "up": "splendour:block/devoided_grass_block_top",
+    "north": "splendour:block/devoided_grass_block_side",
+    "south": "splendour:block/devoided_grass_block_side",
+    "east": "splendour:block/devoided_grass_block_side",
+    "west": "splendour:block/devoided_grass_block_side",
+    "down": "splendour:block/devoided_dirt"
+  }
+}

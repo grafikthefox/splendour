@@ -1,4 +1,8 @@
 {
   "item.splendour.forcerite_ingot": "Forcerite Ingot",
-  "item.splendour.forcerite_nugget": "Forcerite Nugget"
+  "item.splendour.forcerite_nugget": "Forcerite Nugget",
+
+  "block.splendour.devoided_dirt": "Devoided Dirt",
+  "block.splendour.devoided_grass_block": "Devoided Grass Block",
+  "block.splendour.faded_log": "Faded Log"
 }

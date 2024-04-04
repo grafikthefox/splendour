@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "splendour:block/tall_devastating_thorns_bottom"
+  },
+  "render_type": "minecraft:cutout"
+}

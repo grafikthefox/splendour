@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "splendour:block/void_fungus"
+  },
+  "render_type": "minecraft:cutout"
+}

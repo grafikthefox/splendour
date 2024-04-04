@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "splendour:block/tall_devastating_thorns_bottom"
+    },
+    "half=upper": {
+      "model": "splendour:block/tall_devastating_thorns_top"
+    }
+  }
+}

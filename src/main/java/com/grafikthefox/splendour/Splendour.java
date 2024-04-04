@@ -1,5 +1,6 @@
 package com.grafikthefox.splendour;
 
+import com.grafikthefox.splendour.common.block.ModBlocks;
 import com.grafikthefox.splendour.common.item.ModItems;
 import com.grafikthefox.splendour.common.item.SplendourModTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -25,6 +26,7 @@ public class Splendour
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         SplendourModTab.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);

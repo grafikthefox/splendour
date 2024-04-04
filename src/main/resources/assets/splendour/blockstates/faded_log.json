@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "splendour:block/faded_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "splendour:block/faded_log"
+    },
+    "axis=z": {
+      "model": "splendour:block/faded_log_horizontal",
+      "x": 90
+    }
+  }
+}
