@@ -30,6 +30,15 @@ public class SplendourModTab {
                         output.accept(ModBlocks.DEVASTATING_THORNS.get());
                         output.accept(ModBlocks.TALL_DEVASTATING_THORNS.get());
                         output.accept(ModBlocks.VOID_FUNGUS.get());
+                        output.accept(ModBlocks.WALL_FUNGI.get());
+                        output.accept(ModBlocks.FADED_PLANKS.get());
+                        output.accept(ModBlocks.AMETHYST_GLASS.get());
+                        output.accept(ModBlocks.CELESTIAL_PEDESTAL.get());
+                        output.accept(ModBlocks.MOONLIGHT_MOTH_HIVE.get());
+                        output.accept(ModBlocks.MYSTIC_GLOBE.get());
+                        output.accept(ModBlocks.CELESTIAL_STONE.get());
+                        output.accept(ModBlocks.VOID_FUNGUS_BLOCK.get());
+                        output.accept(ModBlocks.VOID_FUNGUS_STEM.get());
 
                     })
                     .build());
