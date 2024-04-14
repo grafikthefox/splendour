@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube",
   "textures": {
-    "particle": "splendour:block/faded_log",
+    "particle": "splendour:block/faded_log_side",
     "up": "splendour:block/faded_log_top",
     "north": "splendour:block/moonlight_moth_hive",
     "south": "splendour:block/faded_log_side",

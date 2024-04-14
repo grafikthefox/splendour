@@ -3,5 +3,5 @@
   "textures": {
     "all": "splendour:block/amethyst_glass"
   },
-  "render_type": "minecraft:translucent"
+  "render_type": "minecraft:cutout"
 }

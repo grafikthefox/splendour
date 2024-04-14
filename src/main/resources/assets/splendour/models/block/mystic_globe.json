@@ -5,6 +5,7 @@
 		"1": "splendour:block/mystic_globe",
 		"particle": "splendour:block/amethyst_glass"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"from": [4, 0, 4],
@@ -55,7 +56,7 @@
 			"scale": [0.7, 0.7, 0.7]
 		},
 		"ground": {
-			"translation": [0, 0.25, 0],
+			"translation": [0, 0.75, 0],
 			"scale": [0.5, 0.5, 0.5]
 		},
 		"gui": {

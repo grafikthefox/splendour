@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "splendour:block/celestial_pedestal",
+      "y": 0
+    },
+    "facing=south": {
+      "model": "splendour:block/celestial_pedestal",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "splendour:block/celestial_pedestal",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "splendour:block/celestial_pedestal",
+      "y": -90
+    }
+  }
+}
