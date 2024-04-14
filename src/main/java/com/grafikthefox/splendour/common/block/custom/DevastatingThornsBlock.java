@@ -31,12 +31,12 @@ public class DevastatingThornsBlock extends TallGrassBlock {
         if(tallThornsBlockState.canSurvive(pLevel, pPos) && pLevel.isEmptyBlock(pPos.above())) {
             DoublePlantBlock.placeAt(pLevel, tallThornsBlockState, pPos, 2);
         }
-        
+
     }
 
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        pEntity.makeStuckInBlock(pState, new Vec3(0.800000011920929, 0.75, 0.800000011920929));
+//        pEntity.makeStuckInBlock(pState, new Vec3(0.95, 1, 0.95));
 //        if (!pLevel.isClientSide && (pEntity.xOld != pEntity.getX() || pEntity.zOld != pEntity.getZ())) {
 //            double d0 = Math.abs(pEntity.getX() - pEntity.xOld);
 //            double d1 = Math.abs(pEntity.getZ() - pEntity.zOld);

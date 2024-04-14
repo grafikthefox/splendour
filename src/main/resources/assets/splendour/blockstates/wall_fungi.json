@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "splendour:block/wall_fungi",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "splendour:block/wall_fungi",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "splendour:block/wall_fungi",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "splendour:block/wall_fungi",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "splendour:block/wall_fungi"
+    },
+    "facing=west": {
+      "model": "splendour:block/wall_fungi",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

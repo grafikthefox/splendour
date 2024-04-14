@@ -27,10 +27,9 @@ public class TallDevastatingThornsBlock extends DoublePlantBlock {
         return (pState.is(ModBlocks.DEVOIDED_GRASS_BLOCK.get()) || pState.is(ModBlocks.DEVOIDED_DIRT.get())) && !pState.is(Blocks.GRASS_BLOCK);
     }
 
-
     @Override
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
-        pEntity.makeStuckInBlock(pState, new Vec3(0.600000011920929, 0.5, 0.600000011920929));
+        pEntity.makeStuckInBlock(pState, new Vec3(0.900000011920929, 0.5, 0.900000011920929));
         if (!pLevel.isClientSide && (pEntity.xOld != pEntity.getX() || pEntity.zOld != pEntity.getZ())) {
             double d0 = Math.abs(pEntity.getX() - pEntity.xOld);
             double d1 = Math.abs(pEntity.getZ() - pEntity.zOld);
