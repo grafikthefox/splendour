@@ -13,6 +13,6 @@ public class SphereParticle extends GenericParticle{
 
     @Override
     public void render(VertexConsumer b, Camera info, float pticks) {
-        super.render(Minecraft.getInstance().options.graphicsMode().get().getId() == 1 ? RenderUtil.getDelayedRender().getBuffer(RenderUtil.GLOWING_PARTICLE) : b, info, pticks);
+        super.render(Minecraft.getInstance().options.graphicsMode().get().getId() == 3 ? RenderUtil.getDelayedRender().getBuffer(RenderUtil.GLOWING_PARTICLE) : b, info, pticks);
     }
 }

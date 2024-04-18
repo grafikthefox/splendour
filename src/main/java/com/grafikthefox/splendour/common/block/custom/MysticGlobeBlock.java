@@ -57,20 +57,17 @@ public class MysticGlobeBlock extends Block {
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         float chance = 0.5f;
         if (chance < pRandom.nextFloat()) {
-            int ok = pRandom.nextIntBetweenInclusive(-1, 1);
-            PacketHandler.sendToTrackingChunk(pLevel, pPos, new MysticGlobeParticlePacket(pPos.getX() + ok, pPos.getY(), pPos.getZ() + ok, pPos.getX() + 0.5f, pPos.getY() - 0.25F, pPos.getZ() + 0.5f, 1f,66, 135, 212));
-//            Particles.create(ModParticles.GLOWING_SPHERE)
-//                    .addVelocity(0f, 0f, 0f)
-//                    .setAlpha(0.45f, 0)
-//                    .setScale(1f, 1f)
-//                    .setColor(66f / 255, 135f / 255, 212f / 255, 255, 0, 0, 0)
-//                    .setLifetime(4)
-//                    .spawn(pLevel, pPos.getX() + ok,  pPos.getY() + ok, pPos.getZ() + ok);
-
-//            pLevel.addParticle(ParticleTypes.ANGRY_VILLAGER, pPos.getX() + ok,  pPos.getY() + ok, pPos.getZ() + ok, 1f, 1f, 1f);
+            Particles.create(ModParticles.GLOWING_SPHERE)
+                    .addVelocity(0f, 0f, 0f)
+                    .setAlpha(0.45f, 0)
+                    .setScale(1f, 1f)
+                    .setColor(1f, 1f, 1f, 1f, 1f, 1f, 1f)
+                    .setLifetime(5)
+                    .spawn(pLevel, pPos.getX(),  pPos.getY() + 0.5f, pPos.getZ());
         }
 
     }
+
 
 //    @Override
 //    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {

@@ -31,9 +31,7 @@ public class Splendour
     public static final ISidedProxy proxy = DistExecutor.unsafeRunForDist(() -> ClientProxy::new, () -> ServerProxy::new);
 
     public Splendour() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-//        modEventBus.addListener(this::commonSetup);
 
         ModItems.register(modEventBus);
         SplendourModTab.register(modEventBus);
@@ -42,14 +40,16 @@ public class Splendour
         ModParticles.register(modEventBus);
 
         IEventBus forgeBus = MinecraftForge.EVENT_BUS;
-
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             forgeBus.addListener(ClientTickHandler::clientTickEnd);
             forgeBus.addListener(RenderUtil::onRenderWorldLast);
         });
 
-        forgeBus.register(this);
+        modEventBus.addListener(this::commonSetup);
+        MinecraftForge.EVENT_BUS.register(this);
+
 
     }
 
@@ -57,17 +57,17 @@ public class Splendour
         PacketHandler.init();
     }
 
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-    }
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-        }
-    }
+//    @SubscribeEvent
+//    public void onServerStarting(ServerStartingEvent event)
+//    {
+//    }
+//
+//    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+//    public static class ClientModEvents
+//    {
+//        @SubscribeEvent
+//        public static void onClientSetup(FMLClientSetupEvent event)
+//        {
+//        }
+//    }
 }

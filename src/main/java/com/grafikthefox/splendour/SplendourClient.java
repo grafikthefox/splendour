@@ -39,20 +39,20 @@ public class SplendourClient {
             BlockEntityRenderers.register(ModTileEntities.CELESTIAL_PEDESTAL_TE.get(), (t) -> new CelestialPedestalRender());
         }
 
-//        @OnlyIn(Dist.CLIENT)
+        @OnlyIn(Dist.CLIENT)
         @SubscribeEvent
         public static void registerFactories(RegisterParticleProvidersEvent event) {
             Minecraft.getInstance().particleEngine.register(ModParticles.SPHERE.get(), SphereParticleType.Factory::new);
             Minecraft.getInstance().particleEngine.register(ModParticles.GLOWING_SPHERE.get(), SparkleParticleType.Factory::new);
         }
 
-//        @OnlyIn(Dist.CLIENT)
+        @OnlyIn(Dist.CLIENT)
         @SubscribeEvent
         public static void shaderRegistry(RegisterShadersEvent event) throws IOException {
             event.registerShader(new ShaderInstance(event.getResourceProvider(), new ResourceLocation("splendour:glowing_particle"), DefaultVertexFormat.PARTICLE),
-                    shader -> { GLOWING_PARTICLE_SHADER = shader; });
+                    shader -> GLOWING_PARTICLE_SHADER = shader);
             event.registerShader(new ShaderInstance(event.getResourceProvider(), new ResourceLocation("splendour:sprite_particle"), DefaultVertexFormat.PARTICLE),
-                    shader -> { SPRITE_PARTICLE_SHADER = shader; });
+                    shader -> SPRITE_PARTICLE_SHADER = shader);
         }
     }
 
