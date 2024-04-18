@@ -7,6 +7,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -34,6 +35,6 @@ public class GlobeStandBlock extends Block {
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
         BlockPos abovePos = pPos.above();
         BlockState aboveState = pLevel.getBlockState(abovePos);
-        return aboveState.is(ModBlocks.MYSTIC_GLOBE.get()) ? super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos) : ModBlocks.CELESTIAL_PEDESTAL.get().defaultBlockState();
+        return aboveState.is(ModBlocks.MYSTIC_GLOBE.get()) ? super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos) : ModBlocks.CELESTIAL_PEDESTAL.get().defaultBlockState().setValue(BlockStateProperties.WATERLOGGED, false);
     }
 }

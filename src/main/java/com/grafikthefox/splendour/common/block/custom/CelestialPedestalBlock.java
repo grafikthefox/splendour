@@ -52,7 +52,7 @@ public class CelestialPedestalBlock extends Block implements SimpleWaterloggedBl
     public CelestialPedestalBlock(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState().setValue(WATERLOGGED, false));
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH));
+        registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Nullable
@@ -79,7 +79,7 @@ public class CelestialPedestalBlock extends Block implements SimpleWaterloggedBl
         if(state.getValue(WATERLOGGED)) {
             level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return state;
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override
@@ -167,8 +167,6 @@ public class CelestialPedestalBlock extends Block implements SimpleWaterloggedBl
 
         return InteractionResult.PASS;
     }
-
-
 
 
 }
