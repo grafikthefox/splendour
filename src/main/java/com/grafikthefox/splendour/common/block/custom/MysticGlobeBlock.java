@@ -1,25 +1,16 @@
 package com.grafikthefox.splendour.common.block.custom;
 
-import com.grafikthefox.splendour.Splendour;
 import com.grafikthefox.splendour.client.particle.ModParticles;
 import com.grafikthefox.splendour.client.particle.types.Particles;
 import com.grafikthefox.splendour.common.block.ModBlocks;
-import com.grafikthefox.splendour.core.network.PacketHandler;
-import com.grafikthefox.splendour.core.network.packets.MysticGlobeParticlePacket;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -55,16 +46,33 @@ public class MysticGlobeBlock extends Block {
 
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        float chance = 0.5f;
-        if (chance < pRandom.nextFloat()) {
+        double x = pPos.getCenter().x;
+        double y = pPos.getCenter().y;
+        double z = pPos.getCenter().z;
+        int[] borders = {-1, 1};
+
+        for(int i = 0; i<3; i++) {
+            float x1 = pRandom.nextFloat() * 2.5f * borders[pRandom.nextInt(borders.length)];
+            float y1 = pRandom.nextFloat() * 2.5f;
+            float z1 = pRandom.nextFloat() * 2.5f * borders[pRandom.nextInt(borders.length)];
+
             Particles.create(ModParticles.GLOWING_SPHERE)
-                    .addVelocity(0f, 0f, 0f)
-                    .setAlpha(0.45f, 0)
-                    .setScale(1f, 1f)
-                    .setColor(1f, 1f, 1f, 1f, 1f, 1f, 1f)
-                    .setLifetime(5)
-                    .spawn(pLevel, pPos.getX(),  pPos.getY() + 0.5f, pPos.getZ());
+                    .addVelocity(-x1/10f, -y1/10, -z1/10f)
+                    .setAlpha(0.1f, 0.8f)
+                    .setScale(0.12f, 0.01f)
+                    .setColor(119 / 255f, 221 / 255f, 252 / 255f, 165 / 255f, 136 / 255f, 245 / 255f, 1f)
+                    .setLifetime(10)
+                    .spawn(pLevel, (float) x + x1, (float) y + y1, (float) z + z1);
         }
+
+        Particles.create(ModParticles.GLOWING_SPHERE)
+                .addVelocity(0, 0, 0)
+                .setAlpha(0.1f, 0.8f)
+                .setScale(0.1f, 0.05f)
+                .setColor(0 / 255f, 185 / 255f, 255 / 255f, 0 / 255f, 185 / 255f, 255 / 255f, 1f)
+                .setLifetime(10)
+                .spawn(pLevel, (float) x, (float) y - 0.125f, (float) z);
+
 
     }
 
