@@ -37,6 +37,13 @@ public class Particles {
             return this;
         }
 
+        public ParticleBuilder setColor(Float[] colors) {
+            setColor(colors[0] / 255f, colors[1] / 255f, colors[2] / 255f, colors[3] / 255f,
+                    colors[4] / 255f, colors[5] / 255f, colors[6]);
+
+            return this;
+        }
+
         /**
          * @param r1 Red value
          * @param g1 Green value

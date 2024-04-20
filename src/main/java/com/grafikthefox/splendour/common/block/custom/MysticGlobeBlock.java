@@ -3,12 +3,15 @@ package com.grafikthefox.splendour.common.block.custom;
 import com.grafikthefox.splendour.client.particle.ModParticles;
 import com.grafikthefox.splendour.client.particle.types.Particles;
 import com.grafikthefox.splendour.common.block.ModBlocks;
+import com.grafikthefox.splendour.util.BiomeEssenceColorEnum;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -17,6 +20,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
@@ -46,34 +50,52 @@ public class MysticGlobeBlock extends Block {
 
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        double x = pPos.getCenter().x;
-        double y = pPos.getCenter().y;
-        double z = pPos.getCenter().z;
-        int[] borders = {-1, 1};
+        if(pLevel.getBiome(pPos).unwrap().left().isPresent()) {
+            ResourceKey<Biome> biomeResourceKey = pLevel.getBiome(pPos).unwrap().left().get();
 
-        for(int i = 0; i<3; i++) {
-            float x1 = pRandom.nextFloat() * 2.5f * borders[pRandom.nextInt(borders.length)];
-            float y1 = pRandom.nextFloat() * 2.5f;
-            float z1 = pRandom.nextFloat() * 2.5f * borders[pRandom.nextInt(borders.length)];
+            Float[] colors = getFloats(biomeResourceKey);
+
+            double x = pPos.getCenter().x;
+            double y = pPos.getCenter().y;
+            double z = pPos.getCenter().z;
+            int[] borders = {-1, 1};
+
+            for (int i = 0; i < 3; i++) {
+                float x1 = pRandom.nextFloat() * 2.5f * borders[pRandom.nextInt(borders.length)];
+                float y1 = pRandom.nextFloat() * 2.5f;
+                float z1 = pRandom.nextFloat() * 2.5f * borders[pRandom.nextInt(borders.length)];
+
+                Particles.create(ModParticles.GLOWING_SPHERE)
+                        .addVelocity(-x1 / 10f, -y1 / 10, -z1 / 10f)
+                        .setAlpha(0.1f, 0.8f)
+                        .setScale(0.12f, 0.01f)
+                        .setColor(colors)
+                        .setLifetime(10)
+                        .spawn(pLevel, (float) x + x1, (float) y + y1, (float) z + z1);
+            }
 
             Particles.create(ModParticles.GLOWING_SPHERE)
-                    .addVelocity(-x1/10f, -y1/10, -z1/10f)
+                    .addVelocity(0, 0, 0)
                     .setAlpha(0.1f, 0.8f)
-                    .setScale(0.12f, 0.01f)
-                    .setColor(119 / 255f, 221 / 255f, 252 / 255f, 165 / 255f, 136 / 255f, 245 / 255f, 1f)
+                    .setScale(0.1f, 0.05f)
+                    .setColor(colors)
                     .setLifetime(10)
-                    .spawn(pLevel, (float) x + x1, (float) y + y1, (float) z + z1);
+                    .spawn(pLevel, (float) x, (float) y - 0.125f, (float) z);
+
+        }
+    }
+
+    private static Float @NotNull [] getFloats(ResourceKey<Biome> biomeResourceKey) {
+        Float[] colors = {1f, 1f, 1f, 1f, 1f, 1f, 1f};
+
+        for(BiomeEssenceColorEnum essenceColor : BiomeEssenceColorEnum.values()) {
+            if(essenceColor.getBiomeList().contains(biomeResourceKey)) {
+                colors = essenceColor.getColors();
+                break;
+            }
         }
 
-        Particles.create(ModParticles.GLOWING_SPHERE)
-                .addVelocity(0, 0, 0)
-                .setAlpha(0.1f, 0.8f)
-                .setScale(0.1f, 0.05f)
-                .setColor(0 / 255f, 185 / 255f, 255 / 255f, 0 / 255f, 185 / 255f, 255 / 255f, 1f)
-                .setLifetime(10)
-                .spawn(pLevel, (float) x, (float) y - 0.125f, (float) z);
-
-
+        return colors;
     }
 
 
